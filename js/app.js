@@ -6,10 +6,6 @@ const errorText = display => {
 const spinner = display => {
     document.getElementById("spinner").style.display = display;
 }
-// single phone with details display
-const singlePhoneDisplay = display => {
-    document.getElementById("photo-details-display").style.display = display;
-}
 
 // get phones 
 const getResult = () => {
@@ -20,10 +16,7 @@ const getResult = () => {
     fetch(url)
         .then(res => res.json())
         .then(data => showPhones(data.data))
-    // single phone with details display none
-    singlePhoneDisplay("none")
 }
-
 // show phones 
 const showPhones = phones => {
     const phonesContainer = document.getElementById("phones-container");
@@ -35,7 +28,7 @@ const showPhones = phones => {
         spinner("none")
     }
     // if found 
-    phones?.forEach(phone => {
+    phones?.slice(0, 20).forEach(phone => {
         const div = document.createElement("div");
         div.innerHTML = `
         <div class="col">
@@ -75,7 +68,7 @@ const singlePhone = details => {
     detailsPhone.textContent = '';
     const div = document.createElement("div");
     div.innerHTML = `
-        <div id="photo-details-display" class="card mb-3 rounded-3" style="max-width: 1000px;">
+        <div class="card mb-3 rounded-3" style="max-width: 1000px;">
             <div class="row g-0">
                 <div class="col-md-4 py-1 my-1 py-md-5 my-md-5">
                     <div class="d-flex flex-column align-items-center">
