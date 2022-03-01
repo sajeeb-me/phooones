@@ -2,6 +2,10 @@
 const errorText = display => {
     document.getElementById("error-text").style.display = display;
 }
+// spinner
+const spinner = display => {
+    document.getElementById("spinner").style.display = display;
+}
 
 // get phones 
 const getResult = () => {
@@ -16,10 +20,14 @@ const getResult = () => {
 // show phones 
 const showPhones = phones => {
     const phonesContainer = document.getElementById("phones-container");
+    spinner("block")
     phonesContainer.textContent = '';
+    // if result no found 
     if (phones.length === 0) {
         errorText("block")
+        spinner("none")
     }
+    // if found 
     phones?.forEach(phone => {
         console.log(phone)
         const div = document.createElement("div");
@@ -40,6 +48,8 @@ const showPhones = phones => {
     </div>
         `
         phonesContainer.appendChild(div)
+        // error text and spinner 
         errorText("none")
+        spinner("none")
     })
 }
