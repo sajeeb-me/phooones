@@ -1,10 +1,14 @@
-// error text 
+// error text display
 const errorText = display => {
     document.getElementById("error-text").style.display = display;
 }
-// spinner
+// spinner display
 const spinner = display => {
     document.getElementById("spinner").style.display = display;
+}
+// single phone with details display
+const singlePhoneDisplay = display => {
+    document.getElementById("photo-details-display").style.display = display;
 }
 
 // get phones 
@@ -16,6 +20,8 @@ const getResult = () => {
     fetch(url)
         .then(res => res.json())
         .then(data => showPhones(data.data))
+    // single phone with details display none
+    singlePhoneDisplay("none")
 }
 
 // show phones 
@@ -57,7 +63,6 @@ const showPhones = phones => {
 // get single phone details 
 const photoDetails = id => {
     const url = `https://openapi.programming-hero.com/api/phone/${id}`
-    console.log(url)
     fetch(url)
         .then(res => res.json())
         .then(phone => singlePhone(phone.data))
@@ -68,9 +73,9 @@ const singlePhone = details => {
     detailsPhone.textContent = '';
     const div = document.createElement("div");
     div.innerHTML = `
-        <div class="card mb-3" style="max-width: 1000px;">
+        <div id="photo-details-display" class="card mb-3 rounded-3" style="max-width: 1000px;">
             <div class="row g-0">
-                <div class="col-md-4 py-5 my-5">
+                <div class="col-md-4 py-1 my-1 py-md-5 my-md-5">
                     <div class="d-flex flex-column align-items-center">
                         <img src="${details.image}" class="img-fluid rounded-start" alt="...">
                         <h5 class="card-title my-3">${details.name}</h5>
