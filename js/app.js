@@ -1,4 +1,7 @@
-
+// error text 
+const errorText = display => {
+    document.getElementById("error-text").style.display = display;
+}
 
 // get phones 
 const getResult = () => {
@@ -12,10 +15,13 @@ const getResult = () => {
 
 // show phones 
 const showPhones = phones => {
-    phones.forEach(phone => {
+    const phonesContainer = document.getElementById("phones-container");
+    phonesContainer.textContent = '';
+    if (phones.length === 0) {
+        errorText("block")
+    }
+    phones?.forEach(phone => {
         console.log(phone)
-        const phonesContainer = document.getElementById("phones-container");
-        // phonesContainer.textContent = '';
         const div = document.createElement("div");
         div.innerHTML = `
         <div class="col">
@@ -34,5 +40,6 @@ const showPhones = phones => {
     </div>
         `
         phonesContainer.appendChild(div)
+        errorText("none")
     })
 }
