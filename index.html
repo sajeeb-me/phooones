@@ -19,9 +19,9 @@
         <section class="container my-5">
             <div class="bg-primary bg-gradient p-5 rounded-3">
                 <!-- header text  -->
-                <h1 class="text-center text-white">Phooones</h1>
+                <h1 id="main-header" class="text-center text-white">Phooones</h1>
                 <!-- input text and search button  -->
-                <div class="input-group my-4">
+                <div class="input-group my-4 w-75 mx-auto">
                     <input id="input-text" type="text" class="form-control bg-" placeholder="Search"
                         aria-label="Recipient's username" aria-describedby="button-addon2">
                     <button onclick="getResult()" class="btn btn-dark" type="button">Search</button>
@@ -29,7 +29,7 @@
             </div>
         </section>
     </header>
-    <!-- body  -->
+    <!-- main body  -->
     <main class="container">
         <!-- error text  -->
         <div>
@@ -41,7 +41,11 @@
                 <span class="visually-hidden">Loading...</span>
             </div>
         </div>
-
+        <!-- single photo with details  -->
+        <section>
+            <div id="photo-details" class="d-flex justify-content-center m-5">
+            </div>
+        </section>
         <!-- phones container -->
         <section>
             <div id="phones-container" class="row row-cols-1 row-cols-md-3 g-4"></div>
