@@ -47,7 +47,9 @@ const showPhones = phones => {
                     <p class="card-text">Brand : ${phone.brand}</p>
                 </div>
                 <div>
+                <a href="#photo-details">
                     <button onclick="photoDetails('${phone.slug}')" class="btn btn-primary" type="button">Explore</button>
+                </a  
                 </div>
             </div>
         </div>
